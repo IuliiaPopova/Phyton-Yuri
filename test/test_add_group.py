@@ -12,9 +12,9 @@ def app(request):
     return fixture
 
 def test_add_group(app):
-    app.login()
+    app.session.login()
     app.create_group(Group(name = "dfg", header = "fgdbf", footer =  "fghsfd"))
 
 def test_add_empty_group(app):
-    app.login()
+    app.session.login()
     app.create_group(Group(name = "", header = "", footer = ""))
