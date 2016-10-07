@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-from selenium.webdriver.firefox.webdriver import WebDriver
 import unittest
 
+from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.support.select import Select
 
-from contact import Contact
+from model.contact import Contact
+
 
 def is_alert_present(wd):
     try:
