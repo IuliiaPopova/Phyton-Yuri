@@ -6,7 +6,6 @@ from selenium.webdriver.support.select import Select
 
 from model.contact import Contact
 
-
 def is_alert_present(wd):
     try:
         wd.switch_to_alert().text
