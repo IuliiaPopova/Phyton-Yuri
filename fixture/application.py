@@ -1,3 +1,4 @@
+
 from selenium.webdriver.firefox.webdriver import WebDriver
 
 from fixture.group import GroupHelper

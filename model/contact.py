@@ -1,3 +1,4 @@
+
 class Contact:
 
     def __init__(self, firstname, lastname, address, home_phone, mobile_phone, work_phone, email, email2, bday, bmonth, byear, address2, phone2):

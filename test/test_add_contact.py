@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 import unittest
 
 from selenium.webdriver.firefox.webdriver import WebDriver
@@ -18,28 +18,32 @@ class test_add_contact(unittest.TestCase):
         self.wd = WebDriver()
         self.wd.implicitly_wait(60)
 
+
+
     def test_add_group(self):
         wd = self.wd
-        self.open_home_page(wd)
-        self.init_new_contact_creation(wd)
-        self.fill_contact_form(wd, Contact(firstname ="dfg", lastname = "fgdbf", address ="fghsfd", home_phone ="dfg", mobile_phone ="fgdbf",
-                                           work_phone ="fghsfd", email ="dfg", email2 ="fgdbf", bday ="10", bmonth ="May",
-                                           byear ="fgdbf", address2 ="fghsfd", phone2 ="fghsfd"))
-        self.return_to_home_page(wd)
+        self.login(wd)
+        self.create_new_contact(wd, Contact(firstname ="dfg", lastname ="fgdbf", address ="fghsfd", home_phone ="dfg", mobile_phone ="fgdbf", work_phone ="fghsfd", email ="dfg", email2 ="fgdbf", bday ="10", bmonth ="May", byear ="fgdbf", address2 ="fghsfd", phone2 ="fghsfd"))
 
     def test_add_empty_group(self):
         wd = self.wd
+        self.login(wd)
+        self.create_new_contact(wd, Contact(firstname ="", lastname ="", address ="", home_phone ="", mobile_phone ="", work_phone ="", email ="", email2 ="", bday ="-", bmonth ="-", byear ="", address2 ="", phone2 =""))
+
+
+    def login (self, wd):
         self.open_home_page(wd)
+
+    def open_home_page(self, wd):
+        wd.get("http://localhost/addressbookv4.1.4/")
+
+
+    def init_new_contact_creation(self, wd):
+        wd.find_element_by_link_text("add new").click()
+
+
+    def create_new_contact(self, wd, contact):
         self.init_new_contact_creation(wd)
-        self.fill_contact_form(wd, Contact(firstname ="", lastname ="", address ="", home_phone ="", mobile_phone ="",
-                                           work_phone ="", email ="", email2 ="", bday ="-", bmonth ="-",
-                                           byear ="", address2 ="", phone2 =""))
-        self.return_to_home_page(wd)
-
-    def return_to_home_page(self, wd):
-        wd.find_element_by_link_text("home page").click()
-
-    def fill_contact_form(self, wd, contact):
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys(contact.firstname)
         wd.find_element_by_name("lastname").clear()
@@ -65,12 +69,15 @@ class test_add_contact(unittest.TestCase):
         wd.find_element_by_name("phone2").clear()
         wd.find_element_by_name("phone2").send_keys(contact.phone2)
         wd.find_element_by_name("submit").click()
+        self.return_to_home_page(wd)
 
-    def init_new_contact_creation(self, wd):
-        wd.find_element_by_link_text("add new").click()
+    def return_to_home_page(self, wd):
+        wd.find_element_by_link_text("home page").click()
 
-    def open_home_page(self, wd):
-        wd.get("http://localhost/addressbookv4.1.4/")
+
+
+
+
 
     def tearDown(self):
         self.wd.quit()
