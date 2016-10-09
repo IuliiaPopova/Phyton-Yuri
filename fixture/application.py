@@ -7,6 +7,7 @@ from fixture.session import SessionHelper
 class Application:
 
     def __init__(self):
+        #Initialization driver
         self.wd = WebDriver()
         self.wd.implicitly_wait(60)
         self.session = SessionHelper(self)

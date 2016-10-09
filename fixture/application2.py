@@ -1,17 +1,19 @@
+
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.support.select import Select
+from fixture.contact import ContactHelper
+from fixture.session2 import SessionHelper2
 
 # Fixture
-
 class Application2:
+
     def __init__(self):
+        # Initialization of driver
         self.wd = WebDriver()
         self.wd.implicitly_wait(60)
-
-
-    def login (self):
-        wd = self.wd
-        self.open_home_page()
+        # Link to fixture
+        self.session2 = SessionHelper2(self)
+        self.group2 = ContactHelper(self)
 
     def open_home_page(self):
         wd = self.wd
