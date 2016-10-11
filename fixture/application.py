@@ -6,6 +6,7 @@ from fixture.session import SessionHelper
 
 class Application:
 
+    # Constructor
     def __init__(self):
         #Initialization driver
         self.wd = WebDriver()
@@ -17,5 +18,6 @@ class Application:
         wd = self.wd
         wd.get("http://localhost/addressbookv4.1.4/")
 
+    # Destroy fixture
     def destroy(self):
         self.wd.quit()
