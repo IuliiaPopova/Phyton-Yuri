@@ -1,8 +1,1 @@
-{
-  "test_del_contact.py::test_delete_first_contact": true,
-  "test_del_group.py::test_delite_first_group": true,
-  "test_modify_contact.py::test_modify_contact_firstname": true,
-  "test_modify_contact.py::test_modify_contact_lastname": true,
-  "test_modify_group.py::test_modify_group_header": true,
-  "test_modify_group.py::test_modify_group_name": true
-}
+{}
