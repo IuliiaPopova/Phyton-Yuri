@@ -1,7 +1,7 @@
 
 class Contact:
-
-    def __init__(self, firstname, lastname, address, home_phone, mobile_phone, work_phone, email, email2, bday, bmonth, byear, address2, phone2):
+    # None - field is not initialized
+    def __init__(self, firstname = None, lastname = None, address = None, home_phone = None, mobile_phone = None, work_phone = None, email = None, email2 = None, bday = None, bmonth = None, byear = None, address2 = None, phone2 = None):
         self.firstname = firstname
         self.lastname = lastname
         self.address = address
