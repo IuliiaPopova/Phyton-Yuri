@@ -4,20 +4,25 @@ from fixture.group import GroupHelper
 from fixture.contact import ContactHelper
 from fixture.session import SessionHelper
 
+
 class Application:
     # Constructor
     def __init__(self):
-        #Initialization driver
+        # Initialization driver
         self.wd = WebDriver()
         self.wd.implicitly_wait(60)
         self.session = SessionHelper(self)
         self.group = GroupHelper(self)
         self.contact = ContactHelper(self)
 
+
     def is_valid(self):
+        # if
         try:
+            # browser should determine the current address of the web page
             self.wd.current_url
             return True
+        # else
         except:
             return False
 
