@@ -14,14 +14,12 @@ def app(request):
     global fixture
     if fixture is None:
         fixture = Application()
-        fixture.session.login()
-        # fixture.session.login(username = "admin", password = "secret")
     else:
         # if fuxture is not working properly
         if not fixture.is_valid():
             fixture = Application()
-            fixture.session.login()
-            # fixture.session.login(username = "admin", password = "secret")
+    fixture.session.login()
+    # fixture.session.ensure_login(username = "admin", password = "secret")
     return fixture
 
 # Finalization happens once at the end
@@ -29,7 +27,7 @@ def app(request):
 @pytest.fixture (scope = "session", autouse = True)
 def stop(request):
     def fin():
-        # fixture.session.logout()
+        # fixture.session.ensure_logout()
         # Destroy of fixture
         fixture.destroy()
     request.addfinalizer(fin)
